@@ -84,9 +84,20 @@ def identificar_columnas_booleanas(df):
   
   print(f'Columnas que podrían ser booleanas: {posibles_booleanas}' )
   return posibles_booleanas
-  
-  
-          
-  
+
+
+def cambiar_tipo (df, formato_fecha):
+  for col in df.columns:
+    for dtype in [float, int]:
+      try:
+        df[col]=df[col].astype(dtype)
+      except:
+        pass
+    try: 
+      df[col] =pd.to_datetime(df[col], format=formato_fecha)
+    except:
+      pass               
+
+def expan_fecha()
 
 
