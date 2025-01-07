@@ -40,4 +40,4 @@ def convertir_columnas (df, formato_fecha):
     try:
        df[col]=pd.to_datetime(df[col], format=formato_fecha)
     except: 
-      pass
+      pass 
