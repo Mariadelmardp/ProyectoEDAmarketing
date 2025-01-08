@@ -32,3 +32,23 @@ def visualizacion_cat(df):
     axes[i].tick_params(axis='x', rotation=90)
   for j in range(i+1, len(axes)):
         fig.delaxes(axes[j]);
+        
+def subplot_col_num (df, col):
+  num_graph = len(col)
+  num_rows= (num_graph + 2) //2
+
+  fig, axes= plt.subplots(num_graph, 2, figsize=(15, num_rows*5))
+
+  for i, col in enumerate(col):
+    sns.histplot(data=df, x= col, ax= axes[i,0], bins= 200)
+    axes[i,0].set_title(f'Distribución de {col}')
+    axes[i,0].set_ylabel('Frecuencia')
+    
+    sns.boxplot(data=df, x= col, ax= axes[i,1])
+    axes[i,1].set_title(f'Boxplot de {col}')
+    
+  for j in range (i+1, len(axes)):
+    fig.delaxes(axes[j])
+
+  plt.tight_layout()
+  plt.show()
